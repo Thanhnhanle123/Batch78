@@ -4,34 +4,34 @@
 // minPercent / maxPercent / minLoan / maxLoan are optional; when absent the entry is considered available for any matching value.
 // Backward compatibility: if HE_SO[package] is an object mapping tenor->coef, code will still handle it.
 const HE_SO = {
-  0.39: [
-    { tenor: 9, coef: 0.12015, minPercent: 15, maxPercent: 80, minLoan: 500000, maxLoan: 14000000 },
-    { tenor: 12, coef: 0.09230, minPercent: 15, maxPercent: 80, minLoan: 500000, maxLoan: 10500000 },
-    { tenor: 15, coef: 0.07557, minPercent: 15, maxPercent: 80, minLoan: 5000000, maxLoan: 8000000 },
-    // 0,12015	0,09230	0,07557
-  ],
-  1.09: [
-    { tenor: 9, coef: 0.12720, minPercent: 0, maxPercent: 19 },
-    { tenor: 12, coef: 0.09924, minPercent: 0, maxPercent: 19 },
-    { tenor: 15, coef: 0.08252, minPercent: 0, maxPercent: 19 },
-    { tenor: 9, coef: 0.12720, minPercent: 20 },
-    { tenor: 12, coef: 0.09924, minPercent: 20 },
-    { tenor: 15, coef: 0.08252, minPercent: 20 },
-    { tenor: 18, coef: 0.07138, minPercent: 20 },
-    { tenor: 21, coef: 0.06348, minPercent: 20 },
-    { tenor: 24, coef: 0.05757, minPercent: 20 }
-    // 0,12722	0,09924	0,08252	0,07138	0,06348	0,05757
-    // 36 can be added similarly when needed
-  ],
-  1.19: [
-    { tenor: 12, coef: 0.10025, minPercent: 15 },
-    { tenor: 15, coef: 0.08349, minPercent: 15 },
-    { tenor: 18, coef: 0.07237, minPercent: 15 },
-    { tenor: 21, coef: 0.06446, minPercent: 15 },
-    { tenor: 24, coef: 0.05856, minPercent: 15 },
-    { tenor: 30, coef: 0.05037, minPercent: 15 },
-    { tenor: 36, coef: 0.04496, minPercent: 15 },
-  ],
+  // 0.39: [
+  //   { tenor: 9, coef: 0.12015, minPercent: 15, maxPercent: 80, minLoan: 500000, maxLoan: 14000000 },
+  //   { tenor: 12, coef: 0.09230, minPercent: 15, maxPercent: 80, minLoan: 500000, maxLoan: 10500000 },
+  //   { tenor: 15, coef: 0.07557, minPercent: 15, maxPercent: 80, minLoan: 5000000, maxLoan: 8000000 },
+  //   // 0,12015	0,09230	0,07557
+  // ],
+  // 1.09: [
+  //   { tenor: 9, coef: 0.12720, minPercent: 0, maxPercent: 19 },
+  //   { tenor: 12, coef: 0.09924, minPercent: 0, maxPercent: 19 },
+  //   { tenor: 15, coef: 0.08252, minPercent: 0, maxPercent: 19 },
+  //   { tenor: 9, coef: 0.12720, minPercent: 20 },
+  //   { tenor: 12, coef: 0.09924, minPercent: 20 },
+  //   { tenor: 15, coef: 0.08252, minPercent: 20 },
+  //   { tenor: 18, coef: 0.07138, minPercent: 20 },
+  //   { tenor: 21, coef: 0.06348, minPercent: 20 },
+  //   { tenor: 24, coef: 0.05757, minPercent: 20 }
+  //   // 0,12722	0,09924	0,08252	0,07138	0,06348	0,05757
+  //   // 36 can be added similarly when needed
+  // ],
+  // 1.19: [
+  //   { tenor: 12, coef: 0.10025, minPercent: 15 },
+  //   { tenor: 15, coef: 0.08349, minPercent: 15 },
+  //   { tenor: 18, coef: 0.07237, minPercent: 15 },
+  //   { tenor: 21, coef: 0.06446, minPercent: 15 },
+  //   { tenor: 24, coef: 0.05856, minPercent: 15 },
+  //   { tenor: 30, coef: 0.05037, minPercent: 15 },
+  //   { tenor: 36, coef: 0.04496, minPercent: 15 },
+  // ],
   // 1.21: [
   //   { tenor: 9, coef: 0.12837, minPercent: 20 },
   //   { tenor: 12, coef: 0.1004, minPercent: 20 },
