@@ -1,8 +1,5 @@
 import { exportToExcel } from './exportExcel.js'
-import {
-  getContractDetailsByNumbers,
-  getContractNumbers
-} from './logic.js'
+import { getContractDetailsByNumbers, getContractNumbers } from './logic.js'
 import { schemeIncentives } from './scheme.js'
 
 // Dữ liệu mock giả lập danh sách hợp đồng
@@ -51,10 +48,7 @@ async function main () {
 
     const contractDetails = await getContractDetailsByNumbers(numbers)
     actualContracts = contractDetails || []
-    console.log(
-      `Kết quả chi tiết hợp đồng từ API (${startDate} -> ${endDate}):`,
-      actualContracts
-    )
+    
     renderResults()
   } catch (error) {
     console.error('Lỗi API, dùng Mock Data:', error)
@@ -258,21 +252,27 @@ function calculateTotalSIBounty (data) {
   const bonusData = calculateContractBonuses(contracts, schemeIncentives)
   const riskFactor = getRiskFactor(pr3, pr6)
 
-  const targetDLAchieve = bonusData.listContractBonus.reduce(
+  const targetAchieve = bonusData.listContractBonus.reduce(
     (sum, c) => sum + c.dsgnInVnd,
     0
   )
 
+  const targetMCAchieve = bonusData.listContractBonus
+    .filter(c => c.contractNo && c.contractNo.startsWith('2W'))
+    .reduce((sum, c) => sum + c.dsgnInVnd, 0)
+
   const salesBonus_A = bonusData.salesBonus * riskFactor
 
   const kpiCompletionRate =
-    targetDL > 0 ? (targetDLAchieve / targetDL) * 100 : 0
+    targetDL > 0 && targetMC > 0
+      ? (targetAchieve / (targetDL + targetMC)) * 100
+      : 0
   const baseDLBonus = calculateTargetDLBonus(targetDL)
   const dlBonusCoefficient = calculateDLBonusCoefficient(kpiCompletionRate)
   const dlTargetBonusAmount_B = baseDLBonus * dlBonusCoefficient
 
-  const mainCategoryRate =
-    targetDL > 0 ? ((targetDL + targetMC) / targetDL) * 100 : 0
+  const mainCategoryRate = targetMC > 0 ? (targetMCAchieve / targetMC ) * 100 : 0
+  
   const totalRate = kpiCompletionRate
   const mainCoefficient_C = getMainAndTotalCategoryCoefficient(
     mainCategoryRate,

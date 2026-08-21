@@ -45,8 +45,6 @@ export const getContractDetailsByNumbers = async (numbers = []) => {
     const detailsPromises = numbers.map(number => fetchContractDetailApi(number))
     const contractDetails = await Promise.all(detailsPromises)
 
-    console.log('Chi tiết các hợp đồng thô:', contractDetails)
-
     // Map lại cấu trúc dữ liệu an toàn với Optional Chaining (?.)
     const data = contractDetails
       .filter(Boolean) // Loại bỏ các item bị null/undefined nếu API chi tiết lỗi
@@ -59,7 +57,6 @@ export const getContractDetailsByNumbers = async (numbers = []) => {
         Li: d.submittedPosScheme?.schemeLiCode ? 'YES' : 'NO'
       }))
 
-    console.log('Dữ liệu hợp đồng đã map:', data)
     return data
   } catch (err) {
     console.warn('API load contract details failed:', err)
