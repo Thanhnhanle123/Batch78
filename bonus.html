@@ -81,6 +81,28 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
+
+        /* Khắc phục tràn viền ô Date Picker trên thiết bị di động */
+        input[type="date"] {
+            max-width: 100% !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+
+            /* Căn chỉnh lại font và padding để phù hợp màn hình nhỏ */
+            font-size: 14px;
+            padding: 8px 12px;
+        }
+
+        /* Ép lại khung chứa ô input không bị vỡ bố cục */
+        .form-group,
+        .input-container {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
     </style>
 </head>
 
