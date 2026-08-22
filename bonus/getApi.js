@@ -1,7 +1,7 @@
 // getApi.js
 
 // Function đóng / mở Modal Đăng Nhập
-export function showLoginModal() {
+export function showLoginModal () {
   const modal = document.getElementById('loginModal')
   if (modal) {
     modal.classList.remove('hidden')
@@ -9,7 +9,7 @@ export function showLoginModal() {
   }
 }
 
-export function hideLoginModal() {
+export function hideLoginModal () {
   const modal = document.getElementById('loginModal')
   if (modal) {
     modal.classList.remove('flex')
@@ -21,7 +21,7 @@ export function hideLoginModal() {
 let pendingAuthPromise = null
 
 // Xử lý tạm dừng request khi thiếu/hết hạn Token & gọi lại sau khi người dùng đăng nhập thành công
-function handleUnauthorized() {
+function handleUnauthorized () {
   if (pendingAuthPromise) return pendingAuthPromise
 
   showLoginModal()
@@ -68,7 +68,7 @@ function handleUnauthorized() {
       reject(new Error('Người dùng đã hủy đăng nhập.'))
     }
 
-    const onSubmit = async (e) => {
+    const onSubmit = async e => {
       e.preventDefault()
       if (errorBox) errorBox.classList.add('hidden')
 
@@ -83,6 +83,13 @@ function handleUnauthorized() {
             errorBox.innerText = res || 'Đăng nhập thất bại!'
             errorBox.classList.remove('hidden')
           }
+          return
+        }
+        const validUsers = ['nguyen.tuyen-giang', 'le.thanh-nhan3']
+
+        if (!validUsers.includes(usernameInput)) {
+          errorBox.innerText = 'Đăng nhập thất bại!, bạn chưa có quyền truy cập'
+          errorBox.classList.remove('hidden')
           return
         }
 
@@ -110,9 +117,9 @@ function handleUnauthorized() {
 }
 
 // Hàm hỗ trợ kiểm tra và đảm bảo luôn có Token hợp lệ trước khi thực hiện Request
-async function ensureValidToken() {
-  let token = sessionStorage.getItem("accessToken")
-  const id = sessionStorage.getItem("id")
+async function ensureValidToken () {
+  let token = sessionStorage.getItem('accessToken')
+  const id = sessionStorage.getItem('id')
 
   if (!token || !id) {
     token = await handleUnauthorized()
@@ -142,7 +149,7 @@ export const fetchLoginApi = async (username, password) => {
 // 2. API Lấy Danh Sách Hợp Đồng
 export const fetchContractsApi = async (fromDate, toDate, statusCodes) => {
   let token = await ensureValidToken()
-  const id = sessionStorage.getItem("id")
+  const id = sessionStorage.getItem('id')
   const baseUrl = `https://hpo.hdsaison.com.vn/hpo/api/v1/contracts/usercreated/${id}`
 
   const queryParams = new URLSearchParams({
@@ -164,7 +171,10 @@ export const fetchContractsApi = async (fromDate, toDate, statusCodes) => {
     sessionStorage.removeItem('accessToken')
     const newToken = await handleUnauthorized()
     response = await fetch(`${baseUrl}?${queryParams}`, {
-      headers: { Authorization: 'Bearer ' + newToken, Accept: 'application/json' }
+      headers: {
+        Authorization: 'Bearer ' + newToken,
+        Accept: 'application/json'
+      }
     })
   }
 
@@ -176,7 +186,7 @@ export const fetchContractsApi = async (fromDate, toDate, statusCodes) => {
 }
 
 // 3. API Lấy Chi Tiết Hợp Đồng
-export const fetchContractDetailApi = async (contractNumber) => {
+export const fetchContractDetailApi = async contractNumber => {
   let token = await ensureValidToken()
   const baseUrl = `https://hpo.hdsaison.com.vn/hpo/api/v1/contracts/contractnumber/${contractNumber}`
 
@@ -188,7 +198,10 @@ export const fetchContractDetailApi = async (contractNumber) => {
     sessionStorage.removeItem('accessToken')
     const newToken = await handleUnauthorized()
     response = await fetch(`${baseUrl}`, {
-      headers: { Authorization: 'Bearer ' + newToken, Accept: 'application/json' }
+      headers: {
+        Authorization: 'Bearer ' + newToken,
+        Accept: 'application/json'
+      }
     })
   }
 
