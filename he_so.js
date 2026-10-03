@@ -62,59 +62,278 @@ const HE_SO = {
   // tenor:  9	12	15	18	21	24	30	36
   // coef: 0,12911	0,10114	0,08441	0,07330	0,06542	0,05951	0,05135	0,04598
   // minPercent: 20 for all 1.28 entries
-  1.28: [
-    { tenor: 9, coef: 0.12911, minPercent: 20 },
-    { tenor: 12, coef: 0.10114, minPercent: 20 },
-    { tenor: 15, coef: 0.08441, minPercent: 20 },
-    { tenor: 18, coef: 0.0733, minPercent: 20 },
-    { tenor: 21, coef: 0.06542, minPercent: 20 },
-    { tenor: 24, coef: 0.05951, minPercent: 20 },
-    { tenor: 30, coef: 0.05135, minPercent: 20 },
-    { tenor: 36, coef: 0.04598, minPercent: 20 }
-  ],
-  // tenor:  9	12	15	18	21	24	30	36
-  // coef: 0,13218	0,10422	0,08751	0,07644	0,06858	0,06273	0,05467	0,04941
-  // minPercent: 20 for all 1.59 entries
-  1.59: [
-    { tenor: 9, coef: 0.13218, minPercent: 20 },
-    { tenor: 12, coef: 0.10422, minPercent: 20 },
-    { tenor: 15, coef: 0.08751, minPercent: 20 },
-    { tenor: 18, coef: 0.07644, minPercent: 20 },
-    { tenor: 21, coef: 0.06858, minPercent: 20 },
-    { tenor: 24, coef: 0.06273, minPercent: 20 },
-    { tenor: 30, coef: 0.05467, minPercent: 20 },
-    { tenor: 36, coef: 0.04941, minPercent: 20 }
-  ],
-  // tenor:  9	12	15	18	21	24	30	36
-  // coef: 0,13484	0,10682	0,09020	0,07915	0,07136	0,06554	0,05759	0,05243
-  // minPercent: 20 for all 1.85 entries
-  1.85: [
-    { tenor: 9, coef: 0.13484, minPercent: 20 },
-    { tenor: 12, coef: 0.10682, minPercent: 20 },
-    { tenor: 15, coef: 0.0902, minPercent: 20 },
-    { tenor: 18, coef: 0.07915, minPercent: 20 },
-    { tenor: 21, coef: 0.07136, minPercent: 20 },
-    { tenor: 24, coef: 0.06554, minPercent: 20 },
-    { tenor: 30, coef: 0.05759, minPercent: 20 },
-    { tenor: 36, coef: 0.05243, minPercent: 20 }
+  // 1.28: [
+  //   { tenor: 9, coef: 0.12911, minPercent: 20 },
+  //   { tenor: 12, coef: 0.10114, minPercent: 20 },
+  //   { tenor: 15, coef: 0.08441, minPercent: 20 },
+  //   { tenor: 18, coef: 0.0733, minPercent: 20 },
+  //   { tenor: 21, coef: 0.06542, minPercent: 20 },
+  //   { tenor: 24, coef: 0.05951, minPercent: 20 },
+  //   { tenor: 30, coef: 0.05135, minPercent: 20 },
+  //   { tenor: 36, coef: 0.04598, minPercent: 20 }
+  // ],
+  // // tenor:  9	12	15	18	21	24	30	36
+  // // coef: 0,13218	0,10422	0,08751	0,07644	0,06858	0,06273	0,05467	0,04941
+  // // minPercent: 20 for all 1.59 entries
+  // 1.59: [
+  //   { tenor: 9, coef: 0.13218, minPercent: 20 },
+  //   { tenor: 12, coef: 0.10422, minPercent: 20 },
+  //   { tenor: 15, coef: 0.08751, minPercent: 20 },
+  //   { tenor: 18, coef: 0.07644, minPercent: 20 },
+  //   { tenor: 21, coef: 0.06858, minPercent: 20 },
+  //   { tenor: 24, coef: 0.06273, minPercent: 20 },
+  //   { tenor: 30, coef: 0.05467, minPercent: 20 },
+  //   { tenor: 36, coef: 0.04941, minPercent: 20 }
+  // ],
+  // // tenor:  9	12	15	18	21	24	30	36
+  // // coef: 0,13484	0,10682	0,09020	0,07915	0,07136	0,06554	0,05759	0,05243
+  // // minPercent: 20 for all 1.85 entries
+  // 1.85: [
+  //   { tenor: 9, coef: 0.13484, minPercent: 20 },
+  //   { tenor: 12, coef: 0.10682, minPercent: 20 },
+  //   { tenor: 15, coef: 0.0902, minPercent: 20 },
+  //   { tenor: 18, coef: 0.07915, minPercent: 20 },
+  //   { tenor: 21, coef: 0.07136, minPercent: 20 },
+  //   { tenor: 24, coef: 0.06554, minPercent: 20 },
+  //   { tenor: 30, coef: 0.05759, minPercent: 20 },
+  //   { tenor: 36, coef: 0.05243, minPercent: 20 }
+  // ],
+  1.19: [
+    { tenor: 12, coef: 0.10025, minPercent: 15 },
+    { tenor: 15, coef: 0.08349, minPercent: 15 },
+    { tenor: 18, coef: 0.07237, minPercent: 15 },
+    { tenor: 21, coef: 0.06446, minPercent: 15 },
+    { tenor: 24, coef: 0.05856, minPercent: 15 },
+    { tenor: 30, coef: 0.05037, minPercent: 15 },
+    { tenor: 36, coef: 0.04496, minPercent: 15 }
   ],
   2.24: [
     { tenor: 9, coef: 0.13876, minPercent: 25 },
-    { tenor: 12, coef: 0.11080, minPercent: 25 },
+    { tenor: 12, coef: 0.1108, minPercent: 25 },
     { tenor: 15, coef: 0.09416, minPercent: 25 },
-    { tenor: 18, coef: 0.08320, minPercent: 25 },
+    { tenor: 18, coef: 0.0832, minPercent: 25 },
     { tenor: 21, coef: 0.07548, minPercent: 25 },
-    { tenor: 24, coef: 0.07012, minPercent: 25 },
+    { tenor: 24, coef: 0.07012, minPercent: 25 }
   ],
   // 0,13876	0,11080	0,09416	0,08320	0,07548	0,07012
   2.9: [
     { tenor: 6, coef: 0.20152, minPercent: 20 },
-    { tenor: 9, coef: 0.14520, minPercent: 20 },
+    { tenor: 9, coef: 0.1452, minPercent: 20 },
     { tenor: 12, coef: 0.11732, minPercent: 20 },
     { tenor: 15, coef: 0.10084, minPercent: 20 },
-    { tenor: 18, coef: 0.09000, minPercent: 20 },
-    { tenor: 21, coef: 0.08240, minPercent: 20 },
-    { tenor: 24, coef: 0.07692, minPercent: 20 },
+    { tenor: 18, coef: 0.09, minPercent: 20 },
+    { tenor: 21, coef: 0.0824, minPercent: 20 },
+    { tenor: 24, coef: 0.07692, minPercent: 20 }
+  ],
+  //1.4 coef: 0,13034	0,10238	0,08565	0,07456	0,06667	0,06082	0,05265	0,04735
+  // minPercent 20 and maxPercent 80 for all 1.4 entries
+  // minLoan: 5,800,000, maxLoan: 92,400,000
+  // tenor:  9	12	15	18	21	24	30	36
+  1.4: [
+    {
+      tenor: 9,
+      coef: 0.13034,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 12,
+      coef: 0.10238,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 15,
+      coef: 0.08565,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 18,
+      coef: 0.07456,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 21,
+      coef: 0.06667,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 24,
+      coef: 0.06082,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 30,
+      coef: 0.05265,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 36,
+      coef: 0.04735,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    }
+  ],
+  //1.74 coef: 0,13371	0,10571	0,08905	0,07799	0,07014	0,06432	0,05633	0,05112
+  // minPercent 20 and maxPercent 80 for all 1.4 entries
+  // minLoan: 5,800,000, maxLoan: 92,400,000
+  // tenor:  9	12	15	18	21	24	30	36
+  1.74: [
+    {
+      tenor: 9,
+      coef: 0.13371,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 12,
+      coef: 0.10571,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 15,
+      coef: 0.08905,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 18,
+      coef: 0.07799,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 21,
+      coef: 0.07014,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 24,
+      coef: 0.06432,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 30,
+      coef: 0.05633,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 36,
+      coef: 0.05112,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    }
+  ],
+  //2.0 coef: 0,13636	0,10840	0,08905	0,08071	0,07296	0,06718	0,05929	0,05418
+  // minPercent 20 and maxPercent 80 for all 1.4 entries
+  // minLoan: 5,800,000, maxLoan: 92,400,000
+  // tenor:  9	12	15	18	21	24	30	36
+  2.0: [
+    {
+      tenor: 9,
+      coef: 0.13636,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 12,
+      coef: 0.1084,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 15,
+      coef: 0.08905,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 18,
+      coef: 0.08071,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 21,
+      coef: 0.07296,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 24,
+      coef: 0.06718,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 30,
+      coef: 0.05929,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    },
+    {
+      tenor: 36,
+      coef: 0.05418,
+      minPercent: 20,
+      maxPercent: 80,
+      minLoan: 5800000,
+      maxLoan: 92400000
+    }
   ]
   // 0,20152	0,14520	0,11732	0,10084	0,09000	0,08240	0,07692
 }
