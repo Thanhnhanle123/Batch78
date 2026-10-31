@@ -85,15 +85,10 @@ function handleUnauthorized () {
           }
           return
         }
-        const validUsers = ['nguyen.tuyen-giang', 'le.thanh-nhan3']
-
-        if (!validUsers.includes(usernameInput)) {
-          errorBox.innerText = 'Đăng nhập thất bại!, bạn chưa có quyền truy cập'
-          errorBox.classList.remove('hidden')
-          return
-        }
 
         // Cập nhật Token và ID mới vào Storage
+        localStorage.setItem('authToken', res.accessToken)
+        localStorage.setItem('authUser', JSON.stringify(res))
         sessionStorage.setItem('accessToken', res.accessToken)
         sessionStorage.setItem('id', res.id)
         if (res.name) sessionStorage.setItem('name', res.name)
@@ -118,8 +113,8 @@ function handleUnauthorized () {
 
 // Hàm hỗ trợ kiểm tra và đảm bảo luôn có Token hợp lệ trước khi thực hiện Request
 async function ensureValidToken () {
-  let token = sessionStorage.getItem('accessToken')
-  const id = sessionStorage.getItem('id')
+  let token = sessionStorage.getItem('accessToken') || localStorage.getItem('authToken')
+  const id = sessionStorage.getItem('id') || JSON.parse(localStorage.getItem('authUser') || '{}')?.id
 
   if (!token || !id) {
     token = await handleUnauthorized()
@@ -149,7 +144,7 @@ export const fetchLoginApi = async (username, password) => {
 // 2. API Lấy Danh Sách Hợp Đồng
 export const fetchContractsApi = async (fromDate, toDate, statusCodes) => {
   let token = await ensureValidToken()
-  const id = sessionStorage.getItem('id')
+  const id = sessionStorage.getItem('id') || JSON.parse(localStorage.getItem('authUser') || '{}')?.id
   const baseUrl = `https://hpo.hdsaison.com.vn/hpo/api/v1/contracts/usercreated/${id}`
 
   const queryParams = new URLSearchParams({

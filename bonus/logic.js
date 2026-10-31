@@ -1,21 +1,12 @@
-import { fetchContractDetailApi, fetchContractsApi, fetchLoginApi } from './getApi.js'
-
-// Đăng nhập vào hệ thống
-export const login = async (u, p) => {
-  try {
-    const user = await fetchLoginApi(u, p)
-    sessionStorage.setItem('accessToken', user.accessToken)
-    sessionStorage.setItem('id', user.id)
-    sessionStorage.setItem('name', user.name)
-  } catch (error) {
-    console.error('Login failed:', error)
-  }
-}
+import {
+  fetchContractDetailApi,
+  fetchContractsApi
+} from './getApi.js'
 
 // ==========================================
 // HÀM 1: Lấy danh sách mã hợp đồng (numbers)
 // ==========================================
-export const getContractNumbers = async (fromDate, toDate, statusCodes) => {
+export const getContractNumbers = async (fromDate, toDate, statusCodes, type="2W") => {
   try {
     const data = await fetchContractsApi(fromDate, toDate, statusCodes)
 
@@ -27,7 +18,8 @@ export const getContractNumbers = async (fromDate, toDate, statusCodes) => {
         : []
 
     // Trả về mảng chứa danh sách các number
-    return arr.map(item => item.number).filter(num => num !== undefined)
+    return arr.map(item => item.number).filter(num => num !== undefined &&  type === type)
+
   } catch (err) {
     console.warn('API load contract numbers failed:', err)
     return []
@@ -42,7 +34,9 @@ export const getContractDetailsByNumbers = async (numbers = []) => {
 
   try {
     // Gọi API lấy chi tiết tất cả hợp đồng song song bằng Promise.all
-    const detailsPromises = numbers.map(number => fetchContractDetailApi(number))
+    const detailsPromises = numbers.map(number =>
+      fetchContractDetailApi(number)
+    )
     const contractDetails = await Promise.all(detailsPromises)
 
     // Map lại cấu trúc dữ liệu an toàn với Optional Chaining (?.)
@@ -54,7 +48,8 @@ export const getContractDetailsByNumbers = async (numbers = []) => {
         schemeCode: d.submittedPosScheme?.schemeCode ?? null,
         tenure: d.tenorInMonths ?? 0,
         dsgn: d.financedAmount ?? 0,
-        Li: d.submittedPosScheme?.schemeLiCode ? 'YES' : 'NO'
+        Li: d.submittedPosScheme?.schemeLiCode ? 'YES' : 'NO',
+        type: d.type
       }))
 
     return data
