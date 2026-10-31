@@ -249,17 +249,9 @@
     </div>
   </div>
 
-  <header>
-    <div class="logo">🚗 Batch 78</div>
-    <nav class="desktop-nav">
-      <a href="./index.html">Tính trả góp</a>
-      <a href="./bonus.html">Tính thưởng SI</a>
-      <a href="#" onclick="logout()">Đăng xuất</a>
-    </nav>
-    <button class="btn btn-outline-primary d-md-none" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
-      ☰
-    </button>
-  </header>
+  <div id="batch41-header"></div>
+  <script src="./assets/js/batch41-common.js"></script>
+
 
   <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
     <div class="offcanvas-header">
@@ -318,7 +310,8 @@
     <div id="documentAlert" class="mb-3" style="color: #d93025; font-weight: 600"></div>
     <label>Ngày sinh</label>
 
-    <input id="dob" class="form-control mb-2" placeholder="DD/MM/YYYY" maxlength="10" inputmode="numeric" oninput="formatDate(this)" />
+    <input id="dob" class="form-control mb-2" placeholder="DD/MM/YYYY" maxlength="10" inputmode="numeric"
+      oninput="formatDate(this)" />
 
     <div id="ageResult" class="mb-3" style="font-weight: 600; color: #1e4fd6"></div>
     <div id="ageAlert" class="mb-3" style="color: #d93025; font-weight: 600"></div>
@@ -345,15 +338,18 @@
           </div>
           <div class="mb-3">
             <label class="form-label">Loại xe</label>
-            <input type="text" id="modalLoaiXe" class="form-control text-uppercase" oninput="forceUpper(this)" placeholder="VD: SH 160I ABS" />
+            <input type="text" id="modalLoaiXe" class="form-control text-uppercase" oninput="forceUpper(this)"
+              placeholder="VD: SH 160I ABS" />
           </div>
           <div class="mb-3">
             <label class="form-label">Màu sơn</label>
-            <input type="text" id="modalMauSon" class="form-control" oninput="formatNumberInput(this)" placeholder="VD: 1500000" />
+            <input type="text" id="modalMauSon" class="form-control" oninput="formatNumberInput(this)"
+              placeholder="VD: 1500000" />
           </div>
           <div class="mb-3">
             <label class="form-label">Giấy tờ</label>
-            <input type="text" id="modalGiayTo" class="form-control" oninput="formatNumberInput(this)" placeholder="VD: 800000" />
+            <input type="text" id="modalGiayTo" class="form-control" oninput="formatNumberInput(this)"
+              placeholder="VD: 800000" />
             <div class="form-check mb-3 small-checkbox">
               <input class="form-check-input" type="checkbox" id="showInterest" checked />
               <label class="form-check-label" for="showInterest">
