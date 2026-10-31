@@ -7,7 +7,7 @@
 
   const links = [
     { href: "./index.html", label: "Tính trả góp", mobileLabel: "📊 Tính trả góp" },
-    { href: "./bonus.html", label: "Tổng quan chỉ tiêu", mobileLabel: "📈 Tổng quan chỉ tiêu" },
+    { href: "./bonus.html", label: "Thưởng SI", mobileLabel: "🎁 Thưởng SI" },
   ];
 
   const currentPage = window.location.pathname.split("/").pop();
